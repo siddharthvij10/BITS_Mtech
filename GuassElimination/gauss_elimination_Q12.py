@@ -75,13 +75,13 @@ def forward_elimination_pivot(R, C, matrix):
         for i in range(box, R - 1):
             div_factor = matrix[i + 1][box] / matrix[box][box]
             div_factor = rounding_sig_digits(div_factor, 5)
-            print('rounded div factor is ', div_factor)
+            # print('rounded div factor is ', div_factor)
             div_count += 1
 
             for j in range(C):
                 multiply_item_rounded = div_factor * matrix[box][j]
                 multiply_item_rounded = rounding_sig_digits(multiply_item_rounded, 5)
-                print('multiply_item_rounded is ', multiply_item_rounded)
+                # print('multiply_item_rounded is ', multiply_item_rounded)
                 matrix[i + 1][j] = rounding_sig_digits((matrix[i + 1][j] - multiply_item_rounded), 5)
                 if j > box:
                     mul_count += 1
