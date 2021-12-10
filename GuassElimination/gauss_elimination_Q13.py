@@ -15,7 +15,10 @@ def generate_random_matrices():
     list_of_matrix = []
     list_of_R = []
     list_of_C = []
-    for n in range(3, 6, 1):
+    start = 10
+    end = 21
+    step = 10
+    for n in range(start, end, step):
         array = np.random.uniform(1, 10, (n, n))
         b = np.random.uniform(1, 10, n)
         array = np.append(array, np.reshape(b, (-1, 1)), axis=1)
@@ -27,7 +30,7 @@ def generate_random_matrices():
         tuple_of_lists = tuple(array_of_tuples)
         list_of_matrix.append(tuple_of_lists)
         list_of_arrays.append(array)
-    return list_of_matrix, list_of_R, list_of_C
+    return list_of_matrix, list_of_R, list_of_C, start, end, step
 
 
 if __name__ == "__main__":
@@ -36,7 +39,7 @@ if __name__ == "__main__":
     choice = int(choice)
     print("you selected {} as your input choice".format(choice))
 
-    list_of_matrix, list_of_R, list_or_C = generate_random_matrices()
+    list_of_matrix, list_of_R, list_or_C, _, _, _ = generate_random_matrices()
 
     total_div = 0
     total_mul = 0
