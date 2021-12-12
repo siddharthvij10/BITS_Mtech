@@ -1,1 +1,1 @@
-# Assignments for MathsForDataScience Subject in MTech
+# Assignments for MTech
