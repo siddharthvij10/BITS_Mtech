@@ -1,0 +1,12 @@
+# FROM ubuntu
+FROM python:3.10-slim-buster
+
+WORKDIR /workspace
+COPY model-eval/eval.py /workspace/
+COPY model/model.py /workspace/
+
+COPY ./model-train/requirements.txt /workspace/
+RUN pip install --no-cache-dir -r requirements.txt
+
+# CMD ["python" , "eval.py"]
+# create dockerfile here
