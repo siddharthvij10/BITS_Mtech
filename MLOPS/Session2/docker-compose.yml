@@ -1,0 +1,26 @@
+services:
+    train:
+        # train service
+        build: 
+            context: .
+            dockerfile: model-train/Dockerfile.train
+        volumes:
+            - ./model:/workspace/model
+        command: bash -c "python train.py && touch /workspace/model/train_done4"
+
+    evaluate:
+        # eval service
+        build: 
+            context: .
+            dockerfile: model-eval/Dockerfile.eval
+        volumes:
+            - ./model:/workspace/model
+        command: bash -c "while [ ! -f /workspace/model/train_done4 ]; do sleep 1; done; python eval.py && touch /workspace/model/eval_done4"
+    infer:
+        # infer service
+        build: 
+            context: .
+            dockerfile: model-infer/Dockerfile.infer
+        volumes:
+            - ./model:/workspace/model
+        command: bash -c "while [ ! -f /workspace/model/eval_done4 ]; do sleep 1; done; pyt
