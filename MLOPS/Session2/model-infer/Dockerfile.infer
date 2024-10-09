@@ -1,0 +1,16 @@
+# FROM ubuntu
+
+# create dockerfile here
+
+
+# FROM ubuntu
+FROM python:3.10-slim-buster
+
+WORKDIR /workspace
+COPY model-infer/infer.py /workspace/
+
+COPY ./model-train/requirements.txt /workspace/
+RUN pip install --no-cache-dir -r requirements.txt
+
+# CMD ["python" , "infer.py"]
+# create dockerfile here
