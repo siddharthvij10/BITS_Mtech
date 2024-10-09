@@ -23,4 +23,4 @@ services:
             dockerfile: model-infer/Dockerfile.infer
         volumes:
             - ./model:/workspace/model
-        command: bash -c "while [ ! -f /workspace/model/eval_done4 ]; do sleep 1; done; pyt
+        command: bash -c "while [ ! -f /workspace/model/eval_done4 ]; do sleep 1; done; python infer.py"
