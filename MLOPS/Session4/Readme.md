@@ -19,12 +19,7 @@ This project focuses on building a model to classify dog breeds using a dataset 
 - `data/`: Directory for storing the dataset.
 - `samples/`: Directory for storing the samples for inferences.
 - `predictions/`: Directory for storing the predictions of samples.
-  
-## Setup
 
-### Prerequisites
-- Docker installed on your system.
-- Kaggle API key for dataset download.
 
 ### Docker Image
 The Docker image should include all dependencies and have your Python package installed for training, evaluation, and inference. To build the Docker image:
