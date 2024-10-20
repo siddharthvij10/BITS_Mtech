@@ -65,6 +65,16 @@ docker run --rm -v $(pwd)/data:/workspace/data -v $(pwd)/logs:/workspace/logs -v
     python src/infer.py --ckpt_path "/workspace/logs/checkpoints/dog_classifier-epoch=04-val_loss=0.01.ckpt" \
     --input_folder "/workspace/samples" --output_folder "/workspace/predictions"
 ```
+## Sample Prediction
+
+Here is an example of the model's prediction for an image:
+
+![Sample Prediction](image.png)
+
+- **Predicted Breed**: Beagle
+- **Confidence**: 0.99
+
+The prediction shows that the model successfully identified the breed of the dog with high confidence.
 
 - **Additional Volume Mount**:
   - `predictions/` is mounted to `/workspace/predictions` for saving output predictions.
