@@ -15,10 +15,15 @@ This project focuses on building a model to classify dog breeds using a dataset 
 - `src/train.py`: Script for training the model.
 - `src/eval.py`: Script for evaluating the model using a trained checkpoint.
 - `src/infer.py`: Script for running inference on new images.
+- `src/datamodules/dog_datamodule.py`: Script for data module
+- `src/models/dog_classifier.py`: Model script
+- `src/utils`: Contains script for logging
 - `Dockerfile`: Docker configuration for building an image with all dependencies.
 - `logs/`: Directory for storing logs and checkpoints.
 - `data/`: Directory for storing the dataset.
-
+- `samples/`: Directory for storing the samples for inferences.
+- `predictions/`: Directory for storing the predictions of samples.
+  
 ## Setup
 
 ### Prerequisites
