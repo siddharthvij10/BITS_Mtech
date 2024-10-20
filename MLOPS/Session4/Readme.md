@@ -1,7 +1,3 @@
-Here’s a beautified version of the `README.md` file for your project, structured with clear sections and proper formatting:
-
----
-
 # Dog Breed Image Classification Project
 
 ## Overview
