@@ -87,7 +87,3 @@ Trainer(log_every_n_steps=10)
 ## References
 - [Kaggle API Documentation](https://www.kaggle.com/docs/api#interacting-with-datasets)
 - [Dog Breed Image Dataset](https://www.kaggle.com/datasets/khushikhushikhushi/dog-breed-image-dataset)
-
----
-
-This version of the `README.md` provides a clear overview, setup instructions, and command examples for using Docker to run the different phases of the project. It also includes explanations for volume mounts and troubleshooting tips. Let me know if you need any more adjustments!
