@@ -1,3 +1,21 @@
+Assignment
+ 
+
+Add Dockerfile for the project
+Create a DevContainer for the Project
+Docker Image should have your package installed
+Use this dataset: https://www.kaggle.com/datasets/khushikhushikhushi/dog-breed-image-datasetLinks to an external site.
+You’ll need to Create a DataModule for this
+You can download using Kaggle API: https://www.kaggle.com/docs/api#interacting-with-datasetsLinks to an external site.
+Add eval.pyLinks to an external site. to load model from checkpoint and run on validation dataset
+Must print the validation metrics
+Push the repository to GitHub
+Use infer.pyLinks to an external site. to run on 10 images
+Add instructions on README.mdLinks to an external site.
+How to use docker run to train and eval the model
+How to Train, Eval, Infer using Docker
+Make sure to use Volume Mounts!
+
 ***Train Model using DockerFile***
 siddharth@AP-PF4FEVBK:~/emlo04-session-04-siddharthvij10$ docker run --rm -v $(pwd)/data:/workspace/data -v $(pwd)/logs:/workspace/logs --shm-size=8g emlo04session04siddharthvij10 python src/train.py
 2024-10-20 09:39:20.377 | INFO     | utils.logging:wrapper:19 - Starting train
