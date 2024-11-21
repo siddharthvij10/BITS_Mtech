@@ -1,0 +1,4 @@
+_target_: src.datamodules.dog_datamodule.DogImageDataModule
+dl_path: ${paths.data_dir}  # This assumes you have a paths config with data_dir defined
+num_workers: 0
+batch_size: 32

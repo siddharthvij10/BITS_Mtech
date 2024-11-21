@@ -1,0 +1,24 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - data: dogbreed
+  - model: dog_classifier
+  - callbacks: default
+  - logger: null
+  - trainer: default
+  - paths: default
+  - hydra: default
+  - experiment: null
+  - debug: null
+
+task_name: "infer"
+tags: ["dev"]
+
+# Inference specific configurations
+input_folder: samples  # Path to input folder containing images
+output_folder: predictions  # Path to output folder for predictions
+ckpt_path: null  # Changed from ??? to null - will automatically use latest checkpoint if not specified
+
+# seed for random number generators
+seed: null
