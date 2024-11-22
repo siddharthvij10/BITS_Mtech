@@ -3,6 +3,12 @@ from hydra import initialize, compose
 from hydra.core.hydra_config import HydraConfig
 from omegaconf import DictConfig
 import os
+import rootutils
+
+root = rootutils.setup_root(__file__, indicator=".project-root", pythonpath=True)
+from src.train import instantiate_loggers, instantiate_callbacks
+import hydra
+import lightning as L
 
 @pytest.fixture(scope="module")
 def cfg() -> DictConfig:
@@ -23,3 +29,8 @@ def cfg() -> DictConfig:
             ]
         )
         return cfg
+
+@pytest.fixture
+def datamodule(cfg):
+    """Fixture to instantiate the datamodule."""
+    return hydra.utils.instantiate(cfg.data)
