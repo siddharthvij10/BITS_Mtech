@@ -26,6 +26,10 @@ class DogImageDataModule(L.LightningDataModule):
         # Ensure the data directory exists
         os.makedirs(self._dl_path, exist_ok=True)  # Create data directory if it doesn't exist
 
+        # Ensure the predictions directory exists at the same level as the data directory
+        predictions_path = os.path.join(Path(self._dl_path).parent, 'predictions')  # Define the predictions path
+        os.makedirs(predictions_path, exist_ok=True)  # Create predictions directory if it doesn't exist
+
         # download_and_extract_archive(
         #     url="https://storage.googleapis.com/mledu-datasets/cats_and_dogs_filtered.zip",
         #     download_root=self._dl_path,
