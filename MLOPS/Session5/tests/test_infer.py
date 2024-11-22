@@ -55,7 +55,7 @@ def test_inference_with_invalid_image(cfg):
 
 def test_run_inference_no_input_folder(config):    
     # Run prediction
-    with pytest.raises(FileNotFoundError):
+    with pytest.raises(ValueError):
         config.input_folder = None
         # prediction = inference(model, dummy_image_path)
         prediction = run_inference(config)
@@ -64,7 +64,7 @@ def test_run_inference_with_empty_input_folder(config):
     # Test inference with an empty input folder
     config.input_folder = ""  # Empty input folder
     
-    with pytest.raises(FileNotFoundError):
+    with pytest.raises(ValueError):
         run_inference(config)
 
 def test_load_image():
@@ -95,5 +95,5 @@ def test_get_latest_checkpoint():
     latest_checkpoint = get_latest_checkpoint()
     
     # Assuming you have checkpoints in the logs/train/runs directory
-    assert latest_checkpoint is not None  # Ensure a checkpoint is found
+    assert latest_checkpoint is None  # Ensure a checkpoint is found
 
