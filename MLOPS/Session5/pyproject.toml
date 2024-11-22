@@ -1,0 +1,29 @@
+[project]
+name = "emlo04-session-04-siddharthvij10"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12, <3.13"
+dependencies = [
+    "beautifulsoup4==4.12.3",
+    "black==24.10.0",
+    "coverage>=7.6.5",
+    "gdown==5.2.0",
+    "hydra-colorlog>=1.2.0",
+    "hydra-core>=1.3.2",
+    "lightning[extra]==2.4.0",
+    "loguru==0.7.2",
+    "pyrootutils>=1.0.4",
+    "pytest>=8.3.3",
+    "rich==13.9.2",
+    "rootutils>=1.0.7",
+    "tensorboard==2.18.0",
+    "timm==1.0.9",
+    "torch==2.4.1+cpu",
+    "torchvision==0.19.1+cpu",
+]
+
+[too.coverage.report]
+include = ["src/**/*.py"]
+exclude = ["tests/*"]
+show_missing = true

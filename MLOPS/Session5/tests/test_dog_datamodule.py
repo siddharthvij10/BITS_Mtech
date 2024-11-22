@@ -6,9 +6,15 @@ root = rootutils.setup_root(__file__, indicator=".project-root", pythonpath=True
 
 from src.datamodules.dog_datamodule import DogImageDataModule
 
-def test_dog_datamodule(cfg):
-    # datamodule = DogImageDataModule(**cfg.data)
-    datamodule = hydra.utils.instantiate(cfg.data) 
+@pytest.fixture(scope="module", autouse=True)
+def prepare_data(cfg):
+    """Fixture to prepare data before any tests run."""
+    datamodule = hydra.utils.instantiate(cfg.data)
+    datamodule.prepare_data()  # Ensure data is prepared before tests
+    yield datamodule  # Provide the datamodule to the tests
+
+def test_dog_datamodule(prepare_data):
+    datamodule = prepare_data
     # Test setup
     datamodule.setup(stage='fit')
     
@@ -22,8 +28,8 @@ def test_dog_datamodule(cfg):
     assert val_dataloader is not None
     assert test_dataloader is not None
 
-def test_prepare_data(cfg):
-    datamodule = hydra.utils.instantiate(cfg.data) 
+def test_prepare_data(prepare_data):
+    datamodule = prepare_data
     # Test setup
     datamodule.setup(stage='fit')
     # Test that prepare_data downloads and splits the dataset
@@ -35,8 +41,8 @@ def test_prepare_data(cfg):
     assert len(list((dataset_dir / "train").glob("*/*"))) > 0, "Train directory should contain images"
     assert len(list((dataset_dir / "validation").glob("*/*"))) > 0, "Validation directory should contain images"
 
-def test_create_dataset(cfg):
-    datamodule = hydra.utils.instantiate(cfg.data) 
+def test_create_dataset(prepare_data):
+    datamodule = prepare_data
     # Test setup
     datamodule.setup(stage='fit')    # Test the create_dataset method
     train_dataset = datamodule.create_dataset(datamodule.data_path.joinpath("train"), datamodule.train_transform)
@@ -44,12 +50,10 @@ def test_create_dataset(cfg):
     assert len(train_dataset) > 0, "Train dataset should not be empty"
     assert hasattr(train_dataset, 'classes'), "Train dataset should have classes attribute"
 
-
 import torch
 
-def test_normalize_transform(cfg):
-
-    datamodule = hydra.utils.instantiate(cfg.data) 
+def test_normalize_transform(prepare_data):
+    datamodule = prepare_data
     # Test setup
     datamodule.setup(stage='fit')      # Test the normalization transform
     transform = datamodule.normalize_transform

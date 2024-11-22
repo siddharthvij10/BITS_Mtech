@@ -4,7 +4,7 @@ from hydra.core.hydra_config import HydraConfig
 from omegaconf import DictConfig
 import os
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="module")
 def cfg() -> DictConfig:
     with initialize(version_base="1.1", config_path="../configs"):
         # Basic configuration for testing

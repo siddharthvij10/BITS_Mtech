@@ -23,6 +23,9 @@ class DogImageDataModule(L.LightningDataModule):
 
     def prepare_data(self):
         """Download images and prepare images datasets."""
+        # Ensure the data directory exists
+        os.makedirs(self._dl_path, exist_ok=True)  # Create data directory if it doesn't exist
+
         # download_and_extract_archive(
         #     url="https://storage.googleapis.com/mledu-datasets/cats_and_dogs_filtered.zip",
         #     download_root=self._dl_path,
